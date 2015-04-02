@@ -423,7 +423,8 @@ class ChefClientManager(ChefManager):
                 raise RuntimeError("Missing chef_config.{0} parameter".format(
                                    k))
 
-    def _get_cmd(self, ctx, runlist):
+    def _get_cmd(self, runlist):
+        ctx = self.ctx
         properties = self.get_node_properties(ctx)
         override_runlist = '-o'
         
