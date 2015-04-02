@@ -426,11 +426,12 @@ class ChefClientManager(ChefManager):
     def _get_cmd(self, runlist):
         ctx = self.ctx
         properties = self.get_node_properties(ctx)
-        override_runlist = '-o'
-        
+
         if ('override_runlist' in properties['chef_config']) \
-           and (properties['chef_config']['override_runlist'] is True):
+           and (properties['chef_config']['override_runlist'] is False):
             override_runlist = '-r'
+        else:
+            override_runlist = '-o'
 
         return [
             "chef-client",
